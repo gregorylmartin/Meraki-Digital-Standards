@@ -35,11 +35,36 @@ foreach ( $this->data['rpt_data'] as $row ) {
 Or, to get a bit more advanced...
 ```
 <table>
-  <?php foreach ( $this->data['rpt_data'] as $row ) { ?>
+  <?php foreach ( $rpt_data' as $row ) { ?>
     <tr>
       <td><?php echo $row->Player ?></td>
       <td><?php echo $row->Jersey ?></td>
     </tr>
   <?php } ?>
 </table>
+```
+
+Most of our use cases are fairly specific.  However, using the example above, it would also be very simple to add the header row to the table with the column names.  This would be done as follows...
+```
+<table>
+  <?php if ( !empty( $rpt_data[0] ) ) {
+    <tr>
+      <?php foreach ( $rpt_data as $key => $value ) { ?>
+        <td><?php echo $key ?></td>
+      <? } ?>
+    </tr>
+    <?php foreach ( $rpt_data as $row ) { ?>
+      <tr>
+        <td><?php echo $row->Player ?></td>
+        <td><?php echo $row->Jersey ?></td>
+      </tr>
+    <?php } ?>
+  <?php } else { ?>
+    <tr><td>No Data Found</td></tr>
+  <?php } ?>
+</table>
+```
+The key to that snippet above is...
+```php
+foreach ( $rpt_data as $key => $value )
 ```
