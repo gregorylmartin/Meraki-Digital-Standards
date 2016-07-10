@@ -33,7 +33,7 @@ foreach ( $this->data['rpt_data'] as $row ) {
 }
 ```
 Or, to get a bit more advanced...
-```php
+```
 <table>
   <?php foreach ( $this->data['rpt_data'] as $row ) { ?>
     <tr>
