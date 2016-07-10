@@ -6,12 +6,12 @@ JavaScript has become a critical component in developing Meraki Digital frontend
 
 The Meraki Digital JavaScript Coding Standards are adapted from the jQuery JavaScript Style Guide. Our standard differs from the jQuery guidelines in the following ways:
 
-Meraki Digital uses single quotation marks for string declarations.
-Case statements are indented within switch blocks.
-Function contents are consistently indented, including full-file closure wrappers.
-Some whitespace rules differ, for consistency with the Meraki Digital PHP coding standards.
-jQuery's 100-character hard line limit is encouraged, but not strictly enforced.
-Many of the examples below have been adapted directly from the jQuery style guide; these differences have all been integrated into the examples on this page. Any of the below standards and examples should be considered best practice for Meraki Digital code, unless explicitly noted as anti-patterns.
+- Meraki Digital uses single quotation marks for string declarations.
+- Case statements are indented within switch blocks.
+- Function contents are consistently indented, including full-file closure wrappers.
+- Some whitespace rules differ, for consistency with the Meraki Digital PHP coding standards.
+- jQuery's 100-character hard line limit is encouraged, but not strictly enforced.
+- Many of the examples below have been adapted directly from the jQuery style guide; these differences have all been integrated into the examples on this page. Any of the below standards and examples should be considered best practice for Meraki Digital code, unless explicitly noted as anti-patterns.
 
 #Code Refactoring
 
