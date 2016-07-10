@@ -279,7 +279,7 @@ The "true" after passwordStrength means that this global is being defined within
 
 ##Common Libraries
 
-Backbone, jQuery, Underscore, and the global wp object are all registered as allowed globals in the root .jshintrc file.
+Backbone, jQuery, and Underscore are all registered as allowed globals in the root .jshintrc file.
 
 Backbone and Underscore may be accessed directly at any time. jQuery should be accessed through $ by passing the jQuery object into an anonymous function:
 
@@ -289,12 +289,7 @@ Backbone and Underscore may be accessed directly at any time. jQuery should be a
 })( jQuery );
 ```
 This will negate the need to call .noConflict(), or to set $ using another variable.
-Files which add to, or modify, the wp object must safely access the global to avoid overwriting previously set properties:
 
-```javascript
-// At the top of the file, set "wp" to its existing value (if present)
-window.wp = window.wp || {};
-```
 
 ##Naming Conventions
 
@@ -612,7 +607,7 @@ To exclude a specific file region from being processed by JSHint, enclose it in 
 ```javascript
 /* jshint ignore:start */
 if ( typeof jQuery.fn.hoverIntent === 'undefined' ) {
-    // hoverIntent r6 - Copy of wp-includes/js/hoverIntent.min.js
+    // hoverIntent r6 - Copy of someLibrary/js/hoverIntent.min.js
     (function(a){a.fn.hoverIntent=...............
 }
 /* jshint ignore:end */
