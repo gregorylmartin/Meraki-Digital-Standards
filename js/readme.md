@@ -325,10 +325,10 @@ $( 'p' ).doSomething();
 Multi-line comments should be used for long comments:
 
 ```javascript
-/**
- * This is a comment that is long enough to warrant being stretched
- * over the span of multiple lines.
- */
+/*
+    This is a comment that is long enough to warrant being stretched
+    over the span of multiple lines.
+*/
 ```
 Inline comments are allowed as an exception when used to annotate special arguments in formal parameter lists:
 
