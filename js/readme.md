@@ -1,8 +1,8 @@
 #Javascript Standards
 
-JavaScript has become a critical component in developing Meraki Digital-based applications (themes and plugins) as well as Meraki Digital core. Standards are needed for formatting and styling JavaScript code to maintain the same code consistency as the Meraki Digital standards provide for core PHP, HTML, and CSS code.
+JavaScript has become a critical component in developing Meraki Digital frontend and backend applications. Standards are needed for formatting and styling JavaScript code to maintain the same code consistency as the Meraki Digital standards provide for core PHP, HTML, and CSS code.
 
-All code in any code-base should look like a single person typed it, no matter how many people contributed. - Principles of Writing Consistent, Idiomatic JavaScript
+> All code in any code-base should look like a single person typed it, no matter how many people contributed. - Principles of Writing Consistent, Idiomatic JavaScript
 
 The Meraki Digital JavaScript Coding Standards are adapted from the jQuery JavaScript Style Guide. Our standard differs from the jQuery guidelines in the following ways:
 
@@ -26,7 +26,9 @@ All new or updated JavaScript code will be reviewed to ensure it conforms to the
 
 #Spacing
 
-Use spaces liberally throughout your code. "When in doubt, space it out."
+Use spaces liberally throughout your code.
+
+> "When in doubt, space it out."
 
 These rules encourage liberal spacing for improved developer readability. The minification process creates a file that is optimized for browsers to read and process.
 
