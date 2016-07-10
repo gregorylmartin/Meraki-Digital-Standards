@@ -300,6 +300,10 @@ window.wp = window.wp || {};
 
 Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the Meraki Digital PHP coding standards.
 
+```javascript
+var codingStandards = 'are cool';
+```
+
 Constructors intended for use with new should have a capital first letter (UpperCamelCase).
 
 Names should be descriptive, but not excessively so. Exceptions are allowed for iterators, such as the use of i to represent the index in a loop.
