@@ -277,7 +277,7 @@ This example would make passwordStrength an allowed global variable within that 
 ```
 The "true" after passwordStrength means that this global is being defined within this file. If you are accessing a global which is defined elsewhere, omit :true to designate the global as read-only.
 
-Common Libraries
+##Common Libraries
 
 Backbone, jQuery, Underscore, and the global wp object are all registered as allowed globals in the root .jshintrc file.
 
