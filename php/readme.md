@@ -2,9 +2,7 @@
 
 Some parts of the Meraki Digital code structure for PHP markup are inconsistent in their style. Meraki Digital is working to gradually improve this by helping users maintain a consistent style so the code can become clean and easy to read at a glance.
 
-Keep the following points in mind when writing PHP code for Meraki Digital, whether for core programming code, plugins, or themes. The guidelines are similar to Pear standards in many ways, but differ in some key respects.
-
-See also: PHP Documentation Standards.
+Keep the following points in mind when writing PHP code for Meraki Digital, whether for core programming code, plugins, or other utilities. The guidelines are similar to [Pear](https://pear.php.net/manual/en/standards.php) standards in many ways, but differ in some key respects.
 
 #PHP
 
@@ -16,7 +14,7 @@ Use single and double quotes when appropriate. If you're not evaluating anything
 echo '<a href="/static/link" title="Yeah yeah!">Link name</a>';
 echo "<a href='$link' title='$linktitle'>$linkname</a>";
 ```
-Text that goes into attributes should be run through esc_attr() so that single or double quotes do not end the attribute value and invalidate the HTML and cause a security issue. See Data Validation in the Codex for further details.
+Text that goes into attributes should be run through esc_attr() so that single or double quotes do not end the attribute value and invalidate the HTML and cause a security issue. 
 
 
 ##Indentation
@@ -194,12 +192,14 @@ Functions that update the database should expect their parameters to lack SQL sl
 
 ##Database Queries
 
-Avoid touching the database directly. If there is a defined function that can get the data you need, use it. Database abstraction (using functions instead of queries) helps keep your code forward-compatible and, in cases where results are cached in memory, it can be many times faster.
+Avoid direct database queries where possible and practical. If there is a defined stored procedure or function that can get the data you need, use it. Database abstraction (using functions/procedures instead of queries) helps keep your code forward-compatible and, in cases where results are cached in memory, it can be many times faster.
 
 
 ##Naming Conventions
 
-Use lowercase letters in variable, action, and function names (never camelCase). Separate words via underscores. Don't abbreviate variable names un-necessarily; let the code be unambiguous and self-documenting.
+Use lowercase letters in variable, action, and function names (<b>never camelCase</b>). Separate words via underscores. Don't abbreviate variable names un-necessarily; let the code be unambiguous and self-documenting.  The notable exception to ambiguity is in looping structures and in common data packages that will be passed to other views or functions.
+
+(Need GLM expansion here)
 
 ```php
 function some_name( $some_variable ) { [...] }
