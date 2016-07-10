@@ -3,7 +3,7 @@
 
 We do a tremendous amount of work with "data objects" (DataSets, RecordSets, Tables, ResultSets, DataArrays).  They go by lots of names, but they are basically object or array constructs holding the data we need to render.  For consistency here, let's just call them RecordSets.
 
-By default, when coming from the database in our PHP/CodeIgniter setup, RecordSets will look something like this...
+By default, when coming from the database in our PHP/CodeIgniter setup, RecordSets will look something like this when rendered to the screen via the print_r() command...
 
 ```
 Array (
@@ -18,4 +18,17 @@ Array (
       [Jersey] => 8
     )
 )
+```
+Basically, the RecordSet is an Array "of" Objects.  The overall RecordSet is an Array.  Each "row" within the RecordSet is an Object.
+
+Because of this, we can easily work with the data.  A call to a function in one of our "model" files will generally return a RecordSet.
+```php
+$this->data['rpt_data'] = $this->mdl_api->get_players( $team_id );
+```
+
+To loop through a RecordSet, then, we do the following...
+```php
+foreach ( $this->data['rpt_data'] as $row ) {
+  echo $row->Player
+}
 ```
