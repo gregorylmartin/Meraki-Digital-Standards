@@ -328,13 +328,9 @@ Warning: Currently the “@” error-control operator prefix will even disable e
 
 ##Don't extract()
 
-Per #22400:
-
 extract() is a terrible function that makes code harder to debug and harder to understand. We should discourage it's use and remove all of our uses of it.
-
-Joseph Scott has a good write-up of why it's bad.
 
 
 ##Credits
 
-PHP standards: Pear standards
+PHP standards: [Pear Standards](https://pear.php.net/manual/en/standards.php)
