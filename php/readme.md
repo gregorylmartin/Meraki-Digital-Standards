@@ -290,7 +290,7 @@ if ( true == $the_force ) {
 }
 ```
 
-When doing logical comparisons, always put the variable on the right side, constants or literals on the left.
+When doing logical comparisons (for equal and not equal), always put the variable on the right side, constants or literals on the left.
 
 <b>Here's Why:</b> In the above example, if you omit an equals sign (admit it, it happens even to the most seasoned of us), you'll get a parse error, because you can't assign to a constant like true. If the statement were the other way around... 
 ```php
@@ -300,7 +300,7 @@ the assignment would be perfectly valid, returning 1, causing the if statement t
 
 > A little bizarre, it is, to read. Get used to it, you will. - Yoda, Jedi Master
 
-This applies to ==, !=, ===, and !==. Yoda conditions for <, >, <= or >= are significantly more difficult to read and are best avoided.
+<b>Note:</b> This applies to ==, !=, ===, and !==. Yoda conditions for less than or greater than variations ( <, >, <= or >= ) are significantly more difficult to read and are best avoided.
 
 
 ##Clever Code
