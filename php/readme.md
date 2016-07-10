@@ -292,7 +292,7 @@ if ( true == $the_force ) {
 
 When doing logical comparisons, always put the variable on the right side, constants or literals on the left.
 
-In the above example, if you omit an equals sign (admit it, it happens even to the most seasoned of us), you'll get a parse error, because you can't assign to a constant like true. If the statement were the other way around ( $the_force = true ), the assignment would be perfectly valid, returning 1, causing the if statement to evaluate to true, and you could be chasing that bug for a while.
+<b>Here's Why:</b> In the above example, if you omit an equals sign (admit it, it happens even to the most seasoned of us), you'll get a parse error, because you can't assign to a constant like true. If the statement were the other way around ( $the_force = true ), the assignment would be perfectly valid, returning 1, causing the if statement to evaluate to true, and you could be chasing that bug for a while.
 
 A little bizarre, it is, to read. Get used to it, you will.
 
