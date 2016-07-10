@@ -1,4 +1,4 @@
-# Meraki-Standards
+# Meraki Digital: Coding Standards
 Coding Standards for Meraki Digital Developers
 
 - [PHP](https://github.com/gregorylmartin/Meraki-Digital-Standards/tree/master/php)
