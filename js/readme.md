@@ -456,7 +456,9 @@ Object literal notation should be used unless the object requires a specific pro
 
 ```javascript
 var myObj = new ConstructorMethod();
-```Object properties should be accessed via dot notation, unless the key is a variable, a reserved word, or a string that would not be a valid identifier:
+```
+
+Object properties should be accessed via dot notation, unless the key is a variable, a reserved word, or a string that would not be a valid identifier:
 
 ```javascript
 prop = object.propertyName;
