@@ -189,27 +189,12 @@ $x = $foo[$bar]; // incorrect
 
 When formatting SQL statements you may break it into several lines and indent if it is sufficiently complex to warrant it. Most statements work well as one line though. Always capitalize the SQL parts of the statement like UPDATE or WHERE.
 
-Functions that update the database should expect their parameters to lack SQL slash escaping when passed. Escaping should be done as close to the time of the query as possible, preferably by using $wpdb->prepare()
-
-$wpdb->prepare() is a method that handles escaping, quoting, and int-casting for SQL queries. It uses a subset of the sprintf() style of formatting. Example :
-
-```php
-$var = "dangerous'"; // raw data that may or may not need to be escaped
-$id = some_foo_number(); // data we expect to be an integer, but we're not certain
-
-$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET post_title = %s WHERE ID = %d", $var, $id ) );
-```
-
-%s is used for string placeholders and %d is used for integer placeholders. Note that they are not 'quoted'! $wpdb->prepare() will take care of escaping and quoting for us. The benefit of this is that we don't have to remember to manually use esc_sql(), and also that it is easy to see at a glance whether something has been escaped or not, because it happens right when the query happens.
-
-See Data Validation in the Codex for more information.
+Functions that update the database should expect their parameters to lack SQL slash escaping when passed. Escaping should be done as close to the time of the query as possible.
 
 
 ##Database Queries
 
 Avoid touching the database directly. If there is a defined function that can get the data you need, use it. Database abstraction (using functions instead of queries) helps keep your code forward-compatible and, in cases where results are cached in memory, it can be many times faster.
-
-If you must touch the database, get in touch with some developers by posting a message to the wp-hackers mailing list. They may want to consider creating a function for the next Meraki Digital version to cover the functionality you wanted.
 
 
 ##Naming Conventions
@@ -224,7 +209,7 @@ Class names should use capitalized words separated by underscores. Any acronyms 
 
 ```php
 class Walker_Category extends Walker { [...] }
-class WP_HTTP { [...] }
+class MD_HTTP { [...] }
 ```
 
 Constants should be in all upper-case with underscores separating words:
@@ -239,15 +224,11 @@ Files should be named descriptively using lowercase letters. Hyphens should sepa
 my-plugin-name.php
 ```
 
-Class file names should be based on the class name with class- prepended and the underscores in the class name replaced with hyphens, for example WP_Error becomes:
+Class file names should be based on the class name with class- prepended and the underscores in the class name replaced with hyphens, for example MD_Error becomes:
 
 ```php
-class-wp-error.php
+class-md-error.php
 ```
-
-This file-naming standard is for all current and new files with classes. There is one exception for three files that contain code that got ported into BackPress: class.wp-dependencies.php, class.wp-scripts.php, class.wp-styles.php. Those files are prepended with class., a dot after the word class instead of a hyphen.
-
-Files containing template tags in wp-includes should have -template appended to the end of the name so that they are obvious.
 
 ```php
 general-template.php
