@@ -33,13 +33,13 @@ foreach ( $this->data['rpt_data'] as $row ) {
 }
 ```
 Or, to get a bit more advanced...
-```html
+```php
 <table>
-  foreach ( $this->data['rpt_data'] as $row ) {
+  <?php foreach ( $this->data['rpt_data'] as $row ) { ?>
     <tr>
       <td><?php echo $row->Player ?></td>
       <td><?php echo $row->Jersey ?></td>
     </tr>
-  }
+  <?php } ?>
 </table>
 ```
