@@ -474,7 +474,7 @@ if ( true === myCondition ) {
     // Do stuff
 }
 ```
-"A little bizarre, it is, to read. Get used to it, you will."
+> "A little bizarre, it is, to read. Get used to it, you will." - Yoda, Jedi Master
 
 
 
