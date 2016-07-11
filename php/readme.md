@@ -15,7 +15,7 @@ Text that goes into attributes should be run through esc_attr() so that single o
 
 ##Indentation
 
-Your indentation should always reflect logical structure. It's fine to setup your editor to use tabs, but make sure that it is translating those tabs into spaces.  Specifically, 4 spaces per tab.  [A study of repos in GitHub](https://ukupat.github.io/tabs-or-spaces/) reveals evidence that spaces make up a fairly overwhelming majority.  Sorry [Richard](https://www.youtube.com/watch?v=SsoOG6ZeyUI), tabs are uncool.
+Your indentation should always reflect logical structure. It's fine to setup your editor to use tabs, but make sure that it is translating those tabs into spaces.  Specifically, 4 spaces per tab.  [A study of repos in GitHub](https://ukupat.github.io/tabs-or-spaces/) reveals evidence that spaces make up a fairly overwhelming majority.  Sorry [Richard Hendricks](https://www.youtube.com/watch?v=SsoOG6ZeyUI), tabs are uncool.
 
 Exception: if you have a block of code that would be more readable if things are aligned, use manual spaces so that your "=" or "=>" symbols line up:
 
