@@ -15,24 +15,24 @@ Text that goes into attributes should be run through esc_attr() so that single o
 
 ##Indentation
 
-Your indentation should always reflect logical structure. Use real tabs and not spaces, as this allows the most flexibility across clients.
+Your indentation should always reflect logical structure. It's fine to setup your editor to use tabs, but make sure that it is translating those tabs into spaces.  Specifically, 4 spaces per tab.  [A study of repos in GitHub](https://ukupat.github.io/tabs-or-spaces/) reveals evidence that spaces make up a fairly overwhelming majority.  Sorry [Richard](https://www.youtube.com/watch?v=SsoOG6ZeyUI), tabs are uncool.
 
-Exception: if you have a block of code that would be more readable if things are aligned, use spaces:
+Exception: if you have a block of code that would be more readable if things are aligned, use manual spaces:
 
 ```php
-[tab]$foo   = 'somevalue';
-[tab]$foo2  = 'somevalue2';
-[tab]$foo34 = 'somevalue3';
-[tab]$foo5  = 'somevalue4';
+    $foo   = 'somevalue';
+    $foo2  = 'somevalue2';
+    $foo34 = 'somevalue3';
+    $foo5  = 'somevalue4';
 ```
 For associative arrays, values should start on a new line. Note the comma after the last array item: this is recommended because it makes it easier to change the order of the array, and makes for cleaner diffs when new items are added.
 
 ```php
 $my_array = array(
-[tab]'foo'   => 'somevalue',
-[tab]'foo2'  => 'somevalue2',
-[tab]'foo3'  => 'somevalue3',
-[tab]'foo34' => 'somevalue3',
+    'foo'   => 'somevalue',
+    'foo2'  => 'somevalue2',
+    'foo3'  => 'somevalue3',
+    'foo34' => 'somevalue3',
 );
 ```
 Rule of thumb: Tabs should be used at the beginning of the line for indentation, while spaces can be used mid-line for alignment.
