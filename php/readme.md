@@ -181,25 +181,37 @@ $x = $foo[$bar]; // incorrect
 
 ##Formatting SQL statements
 
-When formatting SQL statements you may break it into several lines and indent if it is sufficiently complex to warrant it. Most statements work well as one line though. Always capitalize the SQL parts of the statement like UPDATE or WHERE.
+When formatting SQL statements, break it into several lines if it is sufficiently complex to warrant it, or if it will not fit in 100 characters.  Beyond 100 characters risks scrolling off the screen to the right and makes it difficult to read. Also, always capitalize the SQL parts of the statement like SELECT, INSERT, UPDATE, WHERE, GROUP BY, ORDER BY, etc.
 
 Functions that update the database should expect their parameters to lack SQL slash escaping when passed. Escaping should be done as close to the time of the query as possible.
-
 
 ##Database Queries
 
 Avoid direct database queries where possible and practical. If there is a defined stored procedure or function that can get the data you need, use it. Database abstraction (using functions/procedures instead of queries) helps keep your code forward-compatible and, in cases where results are cached in memory, it can be many times faster.
 
-
 ##Naming Conventions
 
-Use lowercase letters in variable, action, and function names (<b>never camelCase</b>). Separate words via underscores. Don't abbreviate variable names un-necessarily; let the code be unambiguous and self-documenting.  The notable exception to ambiguity is in looping structures and in common data packages that will be passed to other views or functions.
+Use lowercase letters in variable, action, and function names (<b>never camelCase</b>). Separate words via underscores. Don't abbreviate variable names un-necessarily; let the code be unambiguous and self-documenting. The notable exception to ambiguity is in looping structures and in common data packages that will be passed to other views or functions.
 
-(Need GLM expansion here)
-
+On a similar, but related note, we do want to make the code "generic" where practical. For example, the following is easy to read, but may not suit our purposes quite like we want them to...
 ```php
-function some_name( $some_variable ) { [...] }
+foreach ( $labor_rows as $labor_row ) {
+    echo $labor_row->empl_name;
+}
 ```
+The $labor_rows and $labor_row variables are almost "too" specific. A great many of the screens and views we build are much like others in other areas of the application. As such, we do quite a bit in the way of cut-n-paste and Save As when starting a new view that's a lot like another one. When we do, there is a tendency for variable names to stay the same as before. Using the example above, a new view dealing with "non-labor" data might end up looking like this...
+```php
+foreach ( $labor_rows as $labor_row ) {
+    echo $labor_row->project_name;
+}
+```
+Even though this view has nothing to do with "labor" data, someone looking at it a few months down the road may be misled or otherwise confused unnecessarily. A better approach might be more like this...
+```php
+foreach ( $data as $row ) {
+    echo $row->project_name;
+}
+```
+For sure, there will be instances where multiple RecordSets are being passed along and something as simple as $data and $row will not be descriptive enough or practical. However, use your best judgment and try to keep the code as re-usable as possible without being cryptic.
 
 Class names should use capitalized words separated by underscores. Any acronyms should be all upper case.
 
@@ -214,21 +226,22 @@ Constants should be in all upper-case with underscores separating words:
 define( 'DOING_AJAX', true );
 ```
 
-Files should be named descriptively using lowercase letters. Hyphens should separate words.
-
+Files should be named descriptively using lowercase letters. Underscores should separate words.
 ```php
-my-plugin-name.php
+mdl_users.php
 ```
-
-Class file names should be based on the class name with class- prepended and the underscores in the class name replaced with hyphens, for example MD_Error becomes:
-
+Code Igniter uses a concept called configuration by convention. As such, certain conventions must be strictly followed in order to avoid compile or run-time errors. One of these relates to the naming of Controllers and Models. Each Controller, for example, has a structure similar to the following...
 ```php
-class-md-error.php
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+require(APPPATH . 'core/MY_Basecontroller.php');
+class ui extends MY_Basecontroller {
+    function index() {
+        ... do some stuff
+    }
+}
 ```
-
-```php
-general-template.php
-```
+The snippet above is for a Controller class called "ui".  Because the class is named "ui", the name of the Controller file must be "ui.php" and it must be placed in the "controllers" folder.
 
 ##Self-Explanatory Flag Values for Function Arguments
 
