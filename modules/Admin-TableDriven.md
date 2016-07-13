@@ -151,12 +151,10 @@ GO
 ##PHP File
 ```php
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH . 'core/MY_Basecontroller.php');
 
 class table extends MY_Basecontroller {
-
     public function __construct() {
         parent::__construct();
         if ($this->data['UserInfo'][0]->Admin != 'Y') {
