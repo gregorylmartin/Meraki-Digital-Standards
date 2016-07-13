@@ -17,7 +17,7 @@ BEGIN
 	 CONSTRAINT [PK_tbl_admin_data_types] PRIMARY KEY CLUSTERED 
 	(
 		[data_type] ASC
-	)WITH (
+	) WITH (
 		PAD_INDEX = OFF, 
 		STATISTICS_NORECOMPUTE = OFF, 
 		IGNORE_DUP_KEY = OFF, 
@@ -40,7 +40,7 @@ BEGIN
 	 CONSTRAINT [PK_tbl_admin_input_types] PRIMARY KEY CLUSTERED 
 	(
 		[input_type] ASC
-	)WITH (
+	) WITH (
 		PAD_INDEX = OFF, 
 		STATISTICS_NORECOMPUTE = OFF, 
 		IGNORE_DUP_KEY = OFF, 
@@ -67,7 +67,7 @@ BEGIN
 	 CONSTRAINT [PK_tbl_admin_tables] PRIMARY KEY CLUSTERED 
 	(
 		[table_id] ASC
-	)WITH (
+	) WITH (
 		PAD_INDEX = OFF, 
 		STATISTICS_NORECOMPUTE = OFF, 
 		IGNORE_DUP_KEY = OFF, 
@@ -95,7 +95,7 @@ BEGIN
 	 CONSTRAINT [PK_tbl_admin_tables_fields] PRIMARY KEY CLUSTERED 
 	(
 		[field_id] ASC
-	)WITH (
+	) WITH (
 		PAD_INDEX = OFF, 
 		STATISTICS_NORECOMPUTE = OFF, 
 		IGNORE_DUP_KEY = OFF, 
