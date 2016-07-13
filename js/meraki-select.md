@@ -1,7 +1,7 @@
 #MDUTILS.selectBox
 
 - selectBoxName = the name of the select box
-- dataArray = the JSON object holding the data
+- data = the JSON object holding the data
 - onClick = the function to run when a user makes a selection
 - options = JSON object with all other params
 
@@ -18,9 +18,9 @@ Options may contain nothing.  But, it "can" contain...
 - style = any "inline" styling to apply to the select box
 - class = much preferred to inline style.  We probably need a metronic based default here, but used this if it is supplied as part of the options
 
-Also, having an "options" param makes this proc future proof.  If we need to add something later, it can be added without breaking any code that calls this function.
+Also, having an "options" param makes this function future proof.  If we need to add something later, it can be added without breaking any code that calls this function.
 ```js
-MDUTILS.selectBox = function($SelectBoxName,$dataArray,$comparetokey,$onclick,$onchange,$style,$class='') {
+MDUTILS.selectBox = function( selectBoxName, data, onClick, options ) {
     ...all the code goes here
 }
 ```
