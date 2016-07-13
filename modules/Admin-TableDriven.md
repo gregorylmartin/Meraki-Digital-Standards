@@ -111,4 +111,41 @@ GO
 
 SET ANSI_PADDING OFF
 GO
+
+
+IF EXISTS ( SELECT  *
+            FROM    sys.objects
+            WHERE   object_id = OBJECT_ID(N'[dbo].[fnAdminFields]')
+                    AND type IN (N'FN', N'IF', N'TF', N'FS', N'FT') ) 
+    DROP FUNCTION [dbo].[fnAdminFields] ;
+GO
+
+PRINT 'Creating Function fnAdminFields...'
+GO
+
+CREATE FUNCTION [dbo].[fnAdminFields](     
+	@id int = 0
+) returns table
+as 
+return (
+	select 
+		a.table_id, a.table_name, a.display_name as table_display_name,
+		a.table_key, a.show_key, a.where_clause,
+		f.field_id, f.field_name, f.display_name as field_display_name,
+		dt.data_type_name, it.input_type_name,
+		f.lookup_sql 
+	from 
+	tbl_admin_tables a
+	inner join tbl_admin_tables_fields f
+		on a.table_id = f.table_id
+	inner join tbl_admin_data_types dt
+		on f.data_type = dt.data_type
+	inner join tbl_admin_input_types it
+		on f.input_type = it.input_type 
+	where (a.table_id = @id or @id = 0)
+)
+GO
+
+
+
 ```
