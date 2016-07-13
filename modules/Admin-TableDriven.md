@@ -321,3 +321,66 @@ class mdl_table extends CI_Model {
     $(document).ready(getTableData(<?=$id?>));
 </script>
 ```
+
+##JS File
+```javascript
+function getTableData(id) {
+    var loading = '#loading';
+    $(loading).show();
+    dLog(dsg_site_root + "table/getTableDataOnly/" + id);
+
+    $.ajax({
+        url: dsg_site_root + "table/getTableDataOnly/" + id,
+        type: 'POST',
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            allData = JSON.parse(data);
+            jsData = allData.data;
+            jsDtl = allData.dtl;
+            jsHdr = allData.hdr;
+            var tblData = [];
+
+            var myVal;
+            for (var i = 0; i < jsData.length; i++) {
+                var table = [];
+                for (var k = 1; k <= jsDtl.length; k++) {
+                    var input_type_name = jsDtl[k-1].input_type_name;
+                    var rendered = false;
+                    if (input_type_name === 'pulldownxxxx'){
+                        rendered = true;
+                        table[k - 1]  = '<select name="table_' + k + '_' + i + '" id="table_' + k + '_' + i + '" class="form-control input-small" onclick="" >';
+                        table[k - 1] += '<option value="0E4EC352-74C3-49CE-B99F-517B7628CA5B" selected="">BCCCJA - CSD CS PSS SYS LO CII 611</option>';
+                        table[k - 1] += '</select>';
+                    }
+
+                    if (!rendered){
+                        myVal = getByIndex(jsData[i], k) || "";
+                        table[k - 1] = '<a href="#" id="table_' + k + '_' + i + '" data-type="text" data-pk="' + jsData[i].id + '" ';
+                        table[k - 1] += 'data-url="' + dsg_site_root + 'table/tableUpdate/' + (k - 1) + '/' + id + '" data-title="id">';
+                        table[k - 1] += myVal + '</a> ';
+                    }
+                }
+                tblData.push(table);
+            }
+
+            $("#genericTable").DataTable({
+                data: tblData,
+                deferRender: true,
+                drawCallback: function() {
+                    dLog('drawCallback');
+                    $.fn.editable.defaults.mode = 'inline';
+                    $("[id^=table_]").editable({
+                        success: function() {
+                            $(this).show();
+                        }
+                    });
+                }
+            });
+            $(loading).hide();
+        }
+    });
+}
+```
