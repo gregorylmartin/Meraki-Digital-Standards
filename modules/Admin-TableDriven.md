@@ -7,102 +7,118 @@ SET ANSI_PADDING ON
 GO
 
 IF NOT EXISTS (
-	SELECT * FROM INFORMATION_SCHEMA.TABLES 
-    WHERE TABLE_NAME = N'tbl_admin_data_types')
+    SELECT * FROM INFORMATION_SCHEMA.TABLES 
+    WHERE TABLE_NAME = N'zz_md_admin_data_types')
 BEGIN
-	PRINT 'Creating tbl_admin_data_types...'
-	CREATE TABLE [dbo].[tbl_admin_data_types](
-		[data_type] [int] IDENTITY(1,1) NOT NULL,
-		[data_type_name] [varchar](50) NULL,
-	 CONSTRAINT [PK_tbl_admin_data_types] PRIMARY KEY CLUSTERED 
-	(
-		[data_type] ASC
-	) WITH (
-		PAD_INDEX = OFF, 
-		STATISTICS_NORECOMPUTE = OFF, 
-		IGNORE_DUP_KEY = OFF, 
-		ALLOW_ROW_LOCKS = ON, 
-		ALLOW_PAGE_LOCKS = ON
-		) ON [PRIMARY]
-	) ON [PRIMARY]
+    PRINT 'Creating zz_md_admin_data_types...'
+    CREATE TABLE [dbo].[zz_md_admin_data_types](
+        [data_type] [int] IDENTITY(1,1) NOT NULL,
+        [data_type_name] [varchar](50) NULL,
+     CONSTRAINT [PK_zz_md_admin_data_types] PRIMARY KEY CLUSTERED 
+    (
+        [data_type] ASC
+    ) WITH (
+        PAD_INDEX = OFF, 
+        STATISTICS_NORECOMPUTE = OFF, 
+        IGNORE_DUP_KEY = OFF, 
+        ALLOW_ROW_LOCKS = ON, 
+        ALLOW_PAGE_LOCKS = ON
+        ) ON [PRIMARY]
+    ) ON [PRIMARY]
+END
+ELSE
+BEGIN
+	PRINT 'zz_md_admin_data_types already exists'
 END
 GO
 
 
 IF NOT EXISTS (
-	SELECT * FROM INFORMATION_SCHEMA.TABLES 
-    WHERE TABLE_NAME = N'tbl_admin_input_types')
+    SELECT * FROM INFORMATION_SCHEMA.TABLES 
+    WHERE TABLE_NAME = N'zz_md_admin_input_types')
 BEGIN
-	PRINT 'Creating tbl_admin_input_types...'
-	CREATE TABLE [dbo].[tbl_admin_input_types](
-		[input_type] [int] IDENTITY(1,1) NOT NULL,
-		[input_type_name] [varchar](50) NULL,
-	 CONSTRAINT [PK_tbl_admin_input_types] PRIMARY KEY CLUSTERED 
-	(
-		[input_type] ASC
-	) WITH (
-		PAD_INDEX = OFF, 
-		STATISTICS_NORECOMPUTE = OFF, 
-		IGNORE_DUP_KEY = OFF, 
-		ALLOW_ROW_LOCKS = ON, 
-		ALLOW_PAGE_LOCKS = ON
-		) ON [PRIMARY]
-	) ON [PRIMARY]
+    PRINT 'Creating zz_md_admin_input_types...'
+    CREATE TABLE [dbo].[zz_md_admin_input_types](
+        [input_type] [int] IDENTITY(1,1) NOT NULL,
+        [input_type_name] [varchar](50) NULL,
+     CONSTRAINT [PK_zz_md_admin_input_types] PRIMARY KEY CLUSTERED 
+    (
+        [input_type] ASC
+    ) WITH (
+        PAD_INDEX = OFF, 
+        STATISTICS_NORECOMPUTE = OFF, 
+        IGNORE_DUP_KEY = OFF, 
+        ALLOW_ROW_LOCKS = ON, 
+        ALLOW_PAGE_LOCKS = ON
+        ) ON [PRIMARY]
+    ) ON [PRIMARY]
+END
+ELSE
+BEGIN
+	PRINT 'zz_md_admin_input_types already exists'
 END
 GO
 
 
 IF NOT EXISTS (
-	SELECT * FROM INFORMATION_SCHEMA.TABLES 
-    WHERE TABLE_NAME = N'tbl_admin_tables')
+    SELECT * FROM INFORMATION_SCHEMA.TABLES 
+    WHERE TABLE_NAME = N'zz_md_admin_tables')
 BEGIN
-	PRINT 'Creating tbl_admin_tables...'
-	CREATE TABLE [dbo].[tbl_admin_tables](
-		[table_id] [int] IDENTITY(1,1) NOT NULL,
-		[table_name] [varchar](100) NOT NULL,
-		[display_name] [varchar](100) NOT NULL,
-		[table_key] [varchar](50) NOT NULL,
-		[show_key] [smallint] NOT NULL CONSTRAINT [DF_tbl_admin_tables_show_key]  DEFAULT ((0)),
-		[where_clause] [nvarchar](max) NULL,
-	 CONSTRAINT [PK_tbl_admin_tables] PRIMARY KEY CLUSTERED 
-	(
-		[table_id] ASC
-	) WITH (
-		PAD_INDEX = OFF, 
-		STATISTICS_NORECOMPUTE = OFF, 
-		IGNORE_DUP_KEY = OFF, 
-		ALLOW_ROW_LOCKS = ON, 
-		ALLOW_PAGE_LOCKS = ON
-		) ON [PRIMARY]
-	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+    PRINT 'Creating zz_md_admin_tables...'
+    CREATE TABLE [dbo].[zz_md_admin_tables](
+        [table_id] [int] IDENTITY(1,1) NOT NULL,
+        [table_name] [varchar](100) NOT NULL,
+        [display_name] [varchar](100) NOT NULL,
+        [table_key] [varchar](50) NOT NULL,
+        [show_key] [smallint] NOT NULL CONSTRAINT [DF_zz_md_admin_tables_show_key]  DEFAULT ((0)),
+        [where_clause] [nvarchar](max) NULL,
+     CONSTRAINT [PK_zz_md_admin_tables] PRIMARY KEY CLUSTERED 
+    (
+        [table_id] ASC
+    ) WITH (
+        PAD_INDEX = OFF, 
+        STATISTICS_NORECOMPUTE = OFF, 
+        IGNORE_DUP_KEY = OFF, 
+        ALLOW_ROW_LOCKS = ON, 
+        ALLOW_PAGE_LOCKS = ON
+        ) ON [PRIMARY]
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+END
+ELSE
+BEGIN
+	PRINT 'zz_md_admin_tables already exists'
 END
 GO
 
 
 IF NOT EXISTS (
-	SELECT * FROM INFORMATION_SCHEMA.TABLES 
-    WHERE TABLE_NAME = N'tbl_admin_tables_fields')
+    SELECT * FROM INFORMATION_SCHEMA.TABLES 
+    WHERE TABLE_NAME = N'zz_md_admin_tables_fields')
 BEGIN
-	PRINT 'Creating tbl_admin_tables_fields...'
-	CREATE TABLE [dbo].[tbl_admin_tables_fields](
-		[field_id] [int] IDENTITY(1,1) NOT NULL,
-		[table_id] [int] NOT NULL,
-		[field_name] [varchar](50) NOT NULL,
-		[display_name] [varchar](50) NULL,
-		[data_type] [smallint] NULL,
-		[input_type] [smallint] NULL,
-		[lookup_sql] [nvarchar](max) NULL,
-	 CONSTRAINT [PK_tbl_admin_tables_fields] PRIMARY KEY CLUSTERED 
-	(
-		[field_id] ASC
-	) WITH (
-		PAD_INDEX = OFF, 
-		STATISTICS_NORECOMPUTE = OFF, 
-		IGNORE_DUP_KEY = OFF, 
-		ALLOW_ROW_LOCKS = ON, 
-		ALLOW_PAGE_LOCKS = ON
-		) ON [PRIMARY]
-	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+    PRINT 'Creating zz_md_admin_tables_fields...'
+    CREATE TABLE [dbo].[zz_md_admin_tables_fields](
+        [field_id] [int] IDENTITY(1,1) NOT NULL,
+        [table_id] [int] NOT NULL,
+        [field_name] [varchar](50) NOT NULL,
+        [display_name] [varchar](50) NULL,
+        [data_type] [smallint] NULL,
+        [input_type] [smallint] NULL,
+        [lookup_sql] [nvarchar](max) NULL,
+     CONSTRAINT [PK_zz_md_admin_tables_fields] PRIMARY KEY CLUSTERED 
+    (
+        [field_id] ASC
+    ) WITH (
+        PAD_INDEX = OFF, 
+        STATISTICS_NORECOMPUTE = OFF, 
+        IGNORE_DUP_KEY = OFF, 
+        ALLOW_ROW_LOCKS = ON, 
+        ALLOW_PAGE_LOCKS = ON
+        ) ON [PRIMARY]
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+END
+ELSE
+BEGIN
+	PRINT 'zz_md_admin_tables_fields already exists'
 END
 GO
 
@@ -114,48 +130,48 @@ GO
 
 
 IF EXISTS ( 
-		SELECT  *
-    	FROM    sys.objects
-    	WHERE   object_id = OBJECT_ID(N'[dbo].[fnAdminFields]')
-    	AND type IN (N'FN', N'IF', N'TF', N'FS', N'FT') 
+        SELECT  *
+        FROM    sys.objects
+        WHERE   object_id = OBJECT_ID(N'[dbo].[fn_zz_md_admin_fields]')
+        AND type IN (N'FN', N'IF', N'TF', N'FS', N'FT') 
     ) 
-    DROP FUNCTION [dbo].[fnAdminFields] ;
+    DROP FUNCTION [dbo].[fn_zz_md_admin_fields] ;
 GO
 
-PRINT 'Creating Function fnAdminFields...'
+PRINT 'Creating Function fn_zz_md_admin_fields...'
 GO
-CREATE FUNCTION [dbo].[fnAdminFields](     
-	@id int = 0
+CREATE FUNCTION [dbo].[fn_zz_md_admin_fields](     
+    @id int = 0
 ) returns table
 as 
 return (
-	select 
-		a.table_id, a.table_name, a.display_name as table_display_name,
-		a.table_key, a.show_key, a.where_clause,
-		f.field_id, f.field_name, f.display_name as field_display_name,
-		dt.data_type_name, it.input_type_name,
-		f.lookup_sql 
-	from 
-	tbl_admin_tables a
-	inner join tbl_admin_tables_fields f
-		on a.table_id = f.table_id
-	inner join tbl_admin_data_types dt
-		on f.data_type = dt.data_type
-	inner join tbl_admin_input_types it
-		on f.input_type = it.input_type 
-	where (a.table_id = @id or @id = 0)
+    select 
+        a.table_id, a.table_name, a.display_name as table_display_name,
+        a.table_key, a.show_key, a.where_clause,
+        f.field_id, f.field_name, f.display_name as field_display_name,
+        dt.data_type_name, it.input_type_name,
+        f.lookup_sql 
+    from 
+    zz_md_admin_tables a
+    inner join zz_md_admin_tables_fields f
+        on a.table_id = f.table_id
+    inner join zz_md_admin_data_types dt
+        on f.data_type = dt.data_type
+    inner join zz_md_admin_input_types it
+        on f.input_type = it.input_type 
+    where (a.table_id = @id or @id = 0)
 )
 GO
 ```
 
 ##PHP Controller File
 ```php
-// table.php
+// masterTables.php
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH . 'core/MY_Basecontroller.php');
 
-class table extends MY_Basecontroller {
+class masterTables extends MY_Basecontroller {
     public function __construct() {
         parent::__construct();
         if ($this->data['UserInfo'][0]->Admin != 'Y') {
@@ -199,7 +215,7 @@ class table extends MY_Basecontroller {
 ##PHP Model File
 ```php
 <?php
-// mdl_table.php
+// mdl_masterTables.php
 class mdl_table extends CI_Model {
     function getTableHeader($tableId) {
         $this->db = $this->load->database($this->data['Mode_Info'][0]->db_array,TRUE);
@@ -324,13 +340,18 @@ class mdl_table extends CI_Model {
 
 ##JS File
 ```javascript
-function getTableData(id) {
+var masterTables = masterTables || {};
+masterTables.gadget = gadget;
+dLog("masterTables top");
+dLog(masterTables);
+
+masterTables.getTableData = function() {
     var loading = '#loading';
     $(loading).show();
-    dLog(dsg_site_root + "table/getTableDataOnly/" + id);
+    dLog(dsg_site_root + "masterTables/getTableDataOnly/" + id);
 
     $.ajax({
-        url: dsg_site_root + "table/getTableDataOnly/" + id,
+        url: dsg_site_root + "masterTables/getTableDataOnly/" + id,
         type: 'POST',
         async: true,
         cache: false,
