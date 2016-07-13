@@ -244,3 +244,80 @@ class mdl_table extends CI_Model {
     }
 }
 ```
+
+## PHP View File
+```php
+// table.php
+<?php $this->load->view('header') ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>theme/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
+<!-- BEGIN PAGE CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN PAGE HEAD -->
+    <!-- END PAGE HEAD -->
+    <!-- BEGIN PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- BEGIN PAGE BREADCRUMB -->
+            <div class="row margin-top-5">
+
+                <div class="col-md-12 col-sm-12">
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet light ">
+                        <div class="portlet-title">
+                            <div class="caption caption-md">
+                                <i class="icon-bar-chart theme-font hide"></i>
+                                <span class="caption-subject theme-font bold uppercase"><?=$hdr[0]->display_name ?></span>
+                                <a href="javascript:;" class="reload" data-original-title="" title="">
+                                </a>
+                            </div>
+
+                            <div class="actions">
+                                <div class="btn-group btn-group-devided" data-toggle="buttons">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portlet-body" >
+                            <div class="row margin-top-0">
+                                <table class="table table-condensed" id="genericTable">
+                                    <thead>
+                                        <?php foreach ($dtl as $row){ ?>
+                                            <th><?=$row->field_display_name?></th>
+                                        <?php } ?>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="loading" class="portlet light" style="display:none">
+                            <div class="portlet-body">
+                                <center><img src="<?php echo base_url(); ?>theme/img/ajax-loader-large.gif"></center>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+                </div>
+            </div>
+            <!-- END PAGE BREADCRUMB -->
+            <!-- BEGIN PAGE CONTENT INNER -->
+            <!-- END PAGE CONTENT INNER -->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+<!-- END PAGE CONTAINER -->
+<!-- BEGIN PRE-FOOTER -->
+
+<!-- END PRE-FOOTER -->
+<!-- BEGIN FOOTER -->
+<?php $this->load->view('footer') ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>theme/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>theme/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script src="<?php echo base_url(); ?>application/views/table/table.js?ver=<?= rand(1, 999999999); ?>" type="text/javascript"></script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
+<script>
+    $(document).ready(getTableData(<?=$id?>));
+</script>
+```
