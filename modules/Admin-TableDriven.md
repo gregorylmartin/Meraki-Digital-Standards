@@ -147,3 +147,52 @@ return (
 )
 GO
 ```
+
+##PHP File
+```php
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+require(APPPATH . 'core/MY_Basecontroller.php');
+
+class table extends MY_Basecontroller {
+
+    public function __construct() {
+        parent::__construct();
+        if ($this->data['UserInfo'][0]->Admin != 'Y') {
+            echo 'Not Authorized for Admin Functions';
+            exit();
+        }
+    }
+
+    function index($tableId = 0) {
+        if ($tableId == 0) {
+            echo 'TableID Cannot be 0 !';
+            exit();
+        } else {
+            $this->load->model('mdl_table');
+            $this->data['hdr'] = $this->mdl_table->getTableHeader($tableId);
+            $this->data['dtl'] = $this->mdl_table->getTableDetail($tableId);
+            $this->data['id'] = $tableId;
+            $this->load->view('table/table', $this->data);
+        }
+    }
+
+    function getTableDataOnly($id) {
+        $this->load->model('mdl_table');
+        $this->data['hdr'] = $this->mdl_table->getTableHeader($id);
+        $this->data['dtl'] = $this->mdl_table->getTableDetail($id);
+        $this->data['data'] = $this->mdl_table->getTableData($this->data['hdr'], $this->data['dtl']);
+        echo json_encode($this->data);
+    }
+
+    function tableUpdate($col, $tblId) {
+        $this->load->model('mdl_table');
+        $this->data['hdr'] = $this->mdl_table->getTableHeader($tblId);
+        $this->data['dtl'] = $this->mdl_table->getTableDetail($tblId);
+        $id = $_POST['pk'];
+        $value = $_POST['value'];
+        $this->mdl_table->updateTable($this->data['hdr'], $this->data['dtl'], $value, $id, $col);
+    }
+}
+```
