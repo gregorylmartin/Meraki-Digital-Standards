@@ -148,8 +148,9 @@ return (
 GO
 ```
 
-##PHP File
+##PHP Controller File
 ```php
+// table.php
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH . 'core/MY_Basecontroller.php');
@@ -191,6 +192,55 @@ class table extends MY_Basecontroller {
         $id = $_POST['pk'];
         $value = $_POST['value'];
         $this->mdl_table->updateTable($this->data['hdr'], $this->data['dtl'], $value, $id, $col);
+    }
+}
+```
+
+##PHP Model File
+```php
+<?php
+// mdl_table.php
+class mdl_table extends CI_Model {
+    function getTableHeader($tableId) {
+        $this->db = $this->load->database($this->data['Mode_Info'][0]->db_array,TRUE);
+        $sql = "select * from tbl_admin_tables where table_id = " . $tableId;
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function getTableDetail($tableId) {
+        $this->db = $this->load->database($this->data['Mode_Info'][0]->db_array,TRUE);
+        $sql = "select * from dbo.fnAdminFields(" . $tableId . ")";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function getTableData($hdr, $dtl) {
+        $this->db = $this->load->database($this->data['Mode_Info'][0]->db_array,TRUE);
+        $sql = "select " . $hdr[0]->table_key . " as id";
+        foreach ($dtl as $row) {
+            $sql .= ", " . $row->field_name;
+        }
+        $sql .=" from " . $hdr[0]->table_name;
+        if ($hdr[0]->where_clause != NULL) {
+            $sql .=" where " . $hdr[0]->where_clause;
+        }
+
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function updateTable($hdr, $dtl, $value, $id, $col) {
+        $this->db = $this->load->database($this->data['Mode_Info'][0]->db_array,TRUE);
+        $sql = "Update " . $hdr[0]->table_name;
+        $sql .= " Set " . $dtl[$col]->field_name . " = ";
+        if ($dtl[$col]->data_type_name = 'text') {
+            $sql .= '\'' . $value . '\'';
+        } else {
+            $sql .= $value;
+        }
+        $sql .= " where " . $hdr[0]->table_key . " = '" . $id . "' ";
+        $this->db->query($sql);
     }
 }
 ```
