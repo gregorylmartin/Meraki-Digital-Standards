@@ -191,32 +191,37 @@ Avoid direct database queries where possible and practical. If there is a define
 
 ##Naming Conventions
 
-Use lowercase letters in variable, action, and function names (<b>never camelCase</b>). Separate words via underscores. Don't abbreviate variable names un-necessarily; let the code be unambiguous and self-documenting. The notable exception to ambiguity is in looping structures and in common data packages that will be passed to other views or functions.
+Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the Meraki Digital PHP coding standards.
+
+```javascript
+var codingStandards = 'are cool';
+```
+Names should be descriptive, but not excessively so. Exceptions are allowed for iterators, such as the use of i to represent the index in a loop.
 
 On a similar, but related note, we do want to make the code "generic" where practical. For example, the following is easy to read, but may not suit our purposes quite like we want them to...
 ```php
-foreach ( $labor_rows as $labor_row ) {
-    echo $labor_row->empl_name;
+foreach ( $laborRows as $laborRow ) {
+    echo $laborRow->empl_name;
 }
 ```
-The $labor_rows and $labor_row variables are almost "too" specific. A great many of the screens and views we build are much like others in other areas of the application. As such, we do quite a bit in the way of cut-n-paste and Save As when starting a new view that's a lot like another one. When we do, there is a tendency for variable names to stay the same as before. Using the example above, a new view dealing with "non-labor" data might end up looking like this...
+The $laborRows and $laborRow variables are almost "too" specific. A great many of the screens and views we build are much like others in other areas of the application. As such, we do quite a bit in the way of cut-n-paste and Save As when starting a new view that's a lot like another one. When we do, there is a tendency for variable names to stay the same as before. Using the example above, a new view dealing with "non-labor" data might end up looking like this...
 ```php
-foreach ( $labor_rows as $labor_row ) {
-    echo $labor_row->project_name;
+foreach ( $laborRows as $laborRow ) {
+    echo $laborRow->projectName;
 }
 ```
 Even though this view has nothing to do with "labor" data, someone looking at it a few months down the road may be misled or otherwise confused unnecessarily. A better approach might be more like this...
 ```php
 foreach ( $data as $row ) {
-    echo $row->project_name;
+    echo $row->projectName;
 }
 ```
 For sure, there will be instances where multiple RecordSets are being passed along and something as simple as $data and $row will not be descriptive enough or practical. However, use your best judgment and try to keep the code as re-usable as possible without being cryptic.
 
-Class names should use capitalized words separated by underscores. Any acronyms should be all upper case.
+Class names should use camelCase as well. Any acronyms should be all upper case.
 
 ```php
-class Walker_Category extends Walker { [...] }
+class walkerCategory extends walker { [...] }
 class MD_HTTP { [...] }
 ```
 
@@ -226,11 +231,12 @@ Constants should be in all upper-case with underscores separating words:
 define( 'DOING_AJAX', true );
 ```
 
-Files should be named descriptively using lowercase letters. Underscores should separate words.
+Files should be named descriptively using camelCase. The exception to this is files in the models folder.  By convention, Code Igniter likes all model files to begin with "mdl_".  As such, we will use "mdl_" in all lowercase as the prefix to our models.  After the prefix, use standard camelCase naming convention.
 ```php
-mdl_users.php
+mdl_userSecurity.php
 ```
-Code Igniter uses a concept called configuration by convention. As such, certain conventions must be strictly followed in order to avoid compile or run-time errors. One of these relates to the naming of Controllers and Models. Each Controller, for example, has a structure similar to the following...
+
+On a similar note, Code Igniter uses a concept called configuration by convention. As such, certain conventions must be strictly followed in order to avoid compile or run-time errors. One of these relates to the naming of Controllers and Models. Each Controller, for example, has a structure similar to the following...
 ```php
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -245,8 +251,7 @@ The snippet above is for a Controller class called "ui".  Because the class is n
 
 ##Self-Explanatory Flag Values for Function Arguments
 
-Prefer string values to just true and false when calling functions.
-
+Prefer string values to simply true and false when calling functions.
 ```php
 // Incorrect
 function eat( $what, $slowly = true ) {
