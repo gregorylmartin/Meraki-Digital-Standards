@@ -9,13 +9,13 @@ By default, when coming from the database in our PHP/CodeIgniter setup, RecordSe
 Array (
   [0] => stdclass Object
     (
-      [Player] => Smith, Emmitt
-      [Jersey] => 22
+      [player] => Smith, Emmitt
+      [jersey] => 22
     )
   [1] => stdclass Object
     (
-      [Player] => Aidman, Troy
-      [Jersey] => 8
+      [player] => Aidman, Troy
+      [jersey] => 8
     )
 )
 ```
@@ -23,24 +23,24 @@ Basically, the RecordSet is an Array "of" Objects.  The overall RecordSet is an 
 
 Because of this, we can easily work with the data.  A call to a function in one of our "model" files will generally return a RecordSet.
 ```php
-$this->data['rpt_data'] = $this->mdl_api->get_players( $team_id );
+$this->data['rptData'] = $this->mdl_api->getPlayers( $teamId );
 ```
 
 To loop through a RecordSet, then, we do the following...
 ```php
-foreach ( $this->data['rpt_data'] as $row ) {
-  echo $row->Player
+foreach ( $this->data['rptData'] as $row ) {
+  echo $row->player
 }
 ```
-Note: When passing $this->data to a view, the view does not need to refer to $this->data any longer.  So, in the "view", $this->data['rpt_data'] becomes $rpt_data.
+Note: When passing $this->data to a view, the view does not need to refer to $this->data any longer.  So, in the "view", $this->data['rptData'] becomes $rptData.
 
 Or, to get a bit more advanced...
 ```
 <table>
-  <?php foreach ( $this->data['rpt_data'] as $row ) { ?>
+  <?php foreach ( $rptData as $row ) { ?>
     <tr>
-      <td><?php echo $row->Player ?></td>
-      <td><?php echo $row->Jersey ?></td>
+      <td><?php echo $row->player ?></td>
+      <td><?php echo $row->jersey ?></td>
     </tr>
   <?php } ?>
 </table>
@@ -49,16 +49,16 @@ Or, to get a bit more advanced...
 Most of our use cases are fairly specific.  However, using the example above, it would also be very simple to add the header row to the table with the column names.  This would be done as follows...
 ```
 <table>
-  <?php if ( !empty( $rpt_data[0] ) ) {
+  <?php if ( !empty( $rptData[0] ) ) {
     <tr>
-      <?php foreach ( $rpt_data as $key => $value ) { ?>
+      <?php foreach ( $rptData as $key => $value ) { ?>
         <td><?php echo $key ?></td>
       <? } ?>
     </tr>
-    <?php foreach ( $rpt_data as $row ) { ?>
+    <?php foreach ( $rptData as $row ) { ?>
       <tr>
-        <td><?php echo $row->Player ?></td>
-        <td><?php echo $row->Jersey ?></td>
+        <td><?php echo $row->player ?></td>
+        <td><?php echo $row->jersey ?></td>
       </tr>
     <?php } ?>
   <?php } else { ?>
@@ -68,5 +68,5 @@ Most of our use cases are fairly specific.  However, using the example above, it
 ```
 The key to that snippet above is...
 ```php
-foreach ( $rpt_data as $key => $value )
+foreach ( $rptData as $key => $value )
 ```
