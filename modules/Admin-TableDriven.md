@@ -1,10 +1,8 @@
 ```sql
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
 SET ANSI_PADDING ON
 GO
 
@@ -30,6 +28,7 @@ BEGIN
 END
 GO
 
+
 IF NOT EXISTS (
 	SELECT * FROM INFORMATION_SCHEMA.TABLES 
     WHERE TABLE_NAME = N'tbl_admin_input_types')
@@ -51,6 +50,7 @@ BEGIN
 	) ON [PRIMARY]
 END
 GO
+
 
 IF NOT EXISTS (
 	SELECT * FROM INFORMATION_SCHEMA.TABLES 
@@ -77,6 +77,7 @@ BEGIN
 	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 END
 GO
+
 
 IF NOT EXISTS (
 	SELECT * FROM INFORMATION_SCHEMA.TABLES 
@@ -108,21 +109,21 @@ GO
 
 SET QUOTED_IDENTIFIER OFF
 GO
-
 SET ANSI_PADDING OFF
 GO
 
 
-IF EXISTS ( SELECT  *
-            FROM    sys.objects
-            WHERE   object_id = OBJECT_ID(N'[dbo].[fnAdminFields]')
-                    AND type IN (N'FN', N'IF', N'TF', N'FS', N'FT') ) 
+IF EXISTS ( 
+		SELECT  *
+    	FROM    sys.objects
+    	WHERE   object_id = OBJECT_ID(N'[dbo].[fnAdminFields]')
+    	AND type IN (N'FN', N'IF', N'TF', N'FS', N'FT') 
+    ) 
     DROP FUNCTION [dbo].[fnAdminFields] ;
 GO
 
 PRINT 'Creating Function fnAdminFields...'
 GO
-
 CREATE FUNCTION [dbo].[fnAdminFields](     
 	@id int = 0
 ) returns table
@@ -145,7 +146,4 @@ return (
 	where (a.table_id = @id or @id = 0)
 )
 GO
-
-
-
 ```
