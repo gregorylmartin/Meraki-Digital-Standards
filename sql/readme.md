@@ -3,6 +3,8 @@
 
 
 ##Stored Procedures
+
+###nocount
 Stored procedures and functions should, very near the top, always have...
 
 ```sql
