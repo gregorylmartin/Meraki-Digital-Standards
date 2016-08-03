@@ -4,6 +4,12 @@
 ```
 rm -rf .git
 ```
+## Attach Username and Password to Git Repo
+
+```
+git remote set-url origin https://user-goes-here:password-goes-here@github.com/user-goes-here/repo-name-goes-here.git
+```
+
 
 ## Create New Repo
 
