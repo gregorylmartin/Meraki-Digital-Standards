@@ -29,4 +29,7 @@ git add .
 git commit -m ‘First commit’
 git remote add origin https://github.com/gregorylmartin/my-git-name.git
 git push origin master
+
+git init; git add .; git commit -m ‘First commit’; git remote add origin https://github.com/gregorylmartin/my-git-name.git; git push origin master;
+
 ```
