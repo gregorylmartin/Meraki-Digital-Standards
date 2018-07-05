@@ -2,7 +2,7 @@
 
 Like any coding standard, the purpose of the Meraki Digital CSS Coding Standards is to create a baseline for collaboration and review within various aspects of the Meraki Digital open source project and community, from core code to themes to plugins. Files within a project should appear as though created by a single entity. Above all else, create code that is readable, meaningful, consistent, and beautiful.
 
-Within core stylesheets, inconsistencies will often be found. We are working on addressing these and make every effort to have patches and commits from this point forward follow the CSS coding standards. More information on the above and contributing to UI/front-end development will be forthcoming in a separate set of guidelines.
+Within core stylesheets, inconsistencies will often be found. We are working on addressing these and making every effort to have patches and commits from this point forward following the CSS coding standards. More information on the above and contributing to UI/front-end development will be forthcoming in a separate set of guidelines.
 
 ## Structure
 
@@ -38,7 +38,7 @@ With specificity, comes great responsibility. Broad selectors allow us to be eff
 
 Similar to the Meraki Digital PHP Coding Standards for file names, use lowercase and separate words with hyphens when naming selectors. Avoid camelcase and underscores.
 Use human readable selectors that describe what element(s) they style.
-Attribute selectors should use double quotes around values
+Attribute selectors should use double quotes around values.
 Refrain from using over-qualified selectors, div.container can simply be stated as .container
 Correct:
 
