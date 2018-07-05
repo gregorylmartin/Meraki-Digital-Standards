@@ -1,10 +1,8 @@
-#SQL Standards (SQL Server)
+# SQL Standards (SQL Server)
 
+## Stored Procedures
 
-
-##Stored Procedures
-
-###nocount
+### nocount
 Stored procedures and functions should, very near the top, always have...
 
 ```sql

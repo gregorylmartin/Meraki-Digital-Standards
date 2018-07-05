@@ -1,19 +1,19 @@
-#PHP Standards
+# PHP Standards
 
 Some parts of the Meraki Digital code structure for PHP markup are inconsistent in their style. Meraki Digital is working to gradually improve this by helping users maintain a consistent style so the code can become clean and easy to read at a glance.
 
 Keep the following points in mind when writing PHP code for Meraki Digital, whether for core programming code, plugins, or other utilities. The guidelines are similar to [Pear](https://pear.php.net/manual/en/standards.php) standards in many ways, but differ in some key respects.
 
-#PHP
+# PHP
 
-##Single and Double Quotes
+## Single and Double Quotes
 
 Use single and double quotes when appropriate. If you're not evaluating anything in the string, use single quotes. You should almost never have to escape quotes in a string, because you can just alternate your quoting style.
 
 Text that goes into attributes should be run through esc_attr() so that single or double quotes do not end the attribute value and invalidate the HTML and cause a security issue. 
 
 
-##Indentation
+## Indentation
 
 Your indentation should always reflect logical structure. It's fine to setup your editor to use tabs, but make sure that it is translating those tabs into spaces.  Specifically, 4 spaces per tab.  [A study of repos in GitHub](https://ukupat.github.io/tabs-or-spaces/) reveals evidence that spaces make up a fairly overwhelming majority.  Sorry [Richard Hendricks](https://www.youtube.com/watch?v=SsoOG6ZeyUI), tabs are uncool.
 
@@ -38,7 +38,7 @@ $my_array = array(
 Rule of thumb: Tabs should be used at the beginning of the line for indentation, while spaces can be used mid-line for alignment.
 
 
-##Brace Style
+## Brace Style
 
 Braces shall be used for all blocks in the style shown here:
 
@@ -86,19 +86,19 @@ Note that requiring the use of braces just means that single-statement inline co
     </div>
 <?php endif; ?>
 ```
-##Use elseif, not else if
+## Use elseif, not else if
 
 else if is not compatible with the colon syntax for if|elseif blocks. For this reason, use elseif for conditionals.
 
 
-##Regular Expressions
+## Regular Expressions
 
 Perl compatible regular expressions (PCRE, preg_ functions) should be used in preference to their POSIX counterparts. Never use the /e switch, use preg_replace_callback instead.
 
 It's most convenient to use single-quoted strings for regular expressions since, contrary to double-quoted strings, they have only two metasequences: \' and \\.
 
 
-##No Shorthand PHP Tags
+## No Shorthand PHP Tags
 
 Important: Never use shorthand PHP start tags. Always use full PHP tags.
 
@@ -116,12 +116,12 @@ Incorrect:
 <?= $var ?>
 ```
 
-##Remove Trailing Spaces
+## Remove Trailing Spaces
 
 Remove trailing whitespace at the end of each line of code. Omitting the closing PHP tag at the end of a file is preferred. If you use the tag, make sure you remove trailing whitespace.
 
 
-##Space Usage
+## Space Usage
 
 Always put spaces after commas, and on both sides of logical, comparison, string and assignment operators.
 
@@ -179,17 +179,17 @@ $x = $foo[ $bar ]; // correct
 $x = $foo[$bar]; // incorrect
 ```
 
-##Formatting SQL statements
+## Formatting SQL statements
 
 When formatting SQL statements, break it into several lines if it is sufficiently complex to warrant it, or if it will not fit in 100 characters.  Beyond 100 characters risks scrolling off the screen to the right and makes it difficult to read. Also, always capitalize the SQL parts of the statement like SELECT, INSERT, UPDATE, WHERE, GROUP BY, ORDER BY, etc.
 
 Functions that update the database should expect their parameters to lack SQL slash escaping when passed. Escaping should be done as close to the time of the query as possible.
 
-##Database Queries
+## Database Queries
 
 Avoid direct database queries where possible and practical. If there is a defined stored procedure or function that can get the data you need, use it. Database abstraction (using functions/procedures instead of queries) helps keep your code forward-compatible and, in cases where results are cached in memory, it can be many times faster.
 
-##Naming Conventions
+## Naming Conventions
 
 Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the Meraki Digital PHP coding standards.
 
@@ -249,7 +249,7 @@ class ui extends MY_Basecontroller {
 ```
 The snippet above is for a Controller class called "ui".  Because the class is named "ui", the name of the Controller file must be "ui.php" and it must be placed in the "controllers" folder.
 
-##Self-Explanatory Flag Values for Function Arguments
+## Self-Explanatory Flag Values for Function Arguments
 
 Prefer string values to simply true and false when calling functions.
 ```php
@@ -284,7 +284,7 @@ function eat( $what, $args ) {
 eat ( 'noodles', array( 'speed' => 'moderate' ) );
 ```
 
-##Ternary Operator
+## Ternary Operator
 
 Ternary operators are fine, but always have them test if the statement is true, not false. Otherwise, it just gets confusing. (An exception would be using ! empty(), as testing for false here is generally more intuitive.)
 
@@ -296,7 +296,7 @@ $musictype = ( 'jazz' == $music ) ? 'cool' : 'blah';
 // (if field is not empty ) ? (do this) : (else, do this);
 ```
 
-##Yoda Conditions
+## Yoda Conditions
 
 ```php
 if ( true == $the_force ) {
@@ -317,7 +317,7 @@ the assignment would be perfectly valid, returning 1, causing the if statement t
 <b>Note:</b> This applies to ==, !=, ===, and !==. Yoda conditions for less than or greater than variations ( <, >, <= or >= ) are significantly more difficult to read and are best avoided.
 
 
-##Clever Code
+## Clever Code
 
 In general, readability is more important than cleverness or brevity.
 
@@ -333,7 +333,7 @@ if ( ! isset( $var ) ) {
 }
 ```
 
-##Error Control Operator @
+## Error Control Operator @
 
 As noted in the PHP docs:
 
@@ -344,11 +344,11 @@ While this operator does exist in Core, it is often used lazily instead of doing
 Warning: Currently the “@” error-control operator prefix will even disable error reporting for critical errors that will terminate script execution. Among other things, this means that if you use “@” to suppress errors from a certain function and either it isn't available or has been mistyped, the script will die right there with no indication as to why.
 
 
-##Don't extract()
+## Don't extract()
 
 extract() is a terrible function that makes code harder to debug and harder to understand. We should discourage it's use and remove all of our uses of it.
 
 
-##Credits
+## Credits
 
 PHP standards: [Pear Standards](https://pear.php.net/manual/en/standards.php)

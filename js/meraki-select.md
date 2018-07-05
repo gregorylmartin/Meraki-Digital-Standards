@@ -1,4 +1,4 @@
-#MDUTILS.selectBox
+# MDUTILS.selectBox
 
 - selectBoxName = the name of the select box
 - data = the JSON object holding the data

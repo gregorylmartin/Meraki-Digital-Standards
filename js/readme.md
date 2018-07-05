@@ -1,4 +1,4 @@
-#Javascript Standards
+# Javascript Standards
 
 JavaScript has become a critical component in developing Meraki Digital frontend and backend applications. Standards are needed for formatting and styling JavaScript code to maintain the same code consistency as the Meraki Digital standards provide for core PHP, HTML, and CSS code.
 
@@ -13,7 +13,7 @@ The Meraki Digital JavaScript Coding Standards are adapted from the jQuery JavaS
 - jQuery's 100-character hard line limit is encouraged, but not strictly enforced.
 - Many of the examples below have been adapted directly from the jQuery style guide; these differences have all been integrated into the examples on this page. Any of the below standards and examples should be considered best practice for Meraki Digital code, unless explicitly noted as anti-patterns.
 
-#Code Refactoring
+# Code Refactoring
 
 > "Code refactoring should not be done just because we can." - Lead Developer Andrew Nacin
 
@@ -24,7 +24,7 @@ While the coding standards are important, refactoring older .js files simply to 
 All new or updated JavaScript code will be reviewed to ensure it conforms to the standards, and passes JSHint.
 
 
-#Spacing
+# Spacing
 
 Use spaces liberally throughout your code.
 
@@ -49,7 +49,7 @@ Indentation with tabs.
 
 Whitespace can easily accumulate at the end of a line - avoid this, as trailing whitespace is caught as an error in JSHint. One way to catch whitespace buildup is enabling visible whitespace characters within your text editor.
 
-##Objects
+## Objects
 
 Object declarations can be made on a single line if they are short (remember the line length guidelines). When an object declaration is too long to fit on one line, there must be one property per line. Property names only need to be quoted if they are reserved words or contain special characters:
 
@@ -69,7 +69,7 @@ var map = { ready: 9,
     when: 4, 'you are': 15 };
 ```
 
-##Arrays and Function Calls
+## Arrays and Function Calls
 
 Always include extra spaces around elements and arguments:
 
@@ -121,7 +121,7 @@ foo( data, function() {
 });
 ```
 
-##Examples of Good Spacing
+## Examples of Good Spacing
 
 ```javascript
 var i;
@@ -155,13 +155,13 @@ try {
 }
 ```
 
-##Semicolons
+## Semicolons
 
 Use them. Never rely on Automatic Semicolon Insertion (ASI).
 
 
 
-##Indentation and Line Breaks
+## Indentation and Line Breaks
 
 Indentation and line breaks add readability to complex statements.
 
@@ -177,7 +177,7 @@ Tabs should be used for indentation. Even if the entire file is contained in a c
 })( jQuery );
 ```
 
-##Blocks and Curly Braces
+## Blocks and Curly Braces
 
 if, else, for, while, and try blocks should always use braces, and always go on multiple lines. The opening brace should be on the same line as the function definition, the conditional, or the loop. The closing brace should be on the line directly following the last statement of the block.
 
@@ -193,7 +193,7 @@ if ( myFunction() ) {
 }
 ```
 
-##Multi-line Statements
+## Multi-line Statements
 
 When a statement is too long to fit on one line, line breaks must occur after an operator.
 
@@ -228,7 +228,7 @@ if ( firstCondition() && secondCondition() &&
 }
 ```
 
-##Chained Method Calls
+## Chained Method Calls
 
 When a chain of method calls is too long to fit on one line, there must be one call per line, with the first call on a separate line from the object the methods are called on. If the method changes the context, an extra level of indentation must be used.
 
@@ -241,10 +241,9 @@ elements
     .appendTo( 'body' );
 ```
 
-#Assignments and Globals
+# Assignments and Globals
 
-
-##Declaring Variables With var
+## Declaring Variables With var
 
 Each function should begin with a single comma-delimited var statement that declares any local variables necessary. If a function does not declare a variable using var, that variable can leak into an outer scope (which is frequently the global scope, a worst-case scenario), and can unwittingly refer to and modify that data.
 
@@ -264,7 +263,7 @@ var b;
 var c;
 ```
 
-##Globals
+## Globals
 
 In the past, Meraki Digital core made heavier use of global variables. Since core JavaScript files are sometimes used within plugins, existing globals should not be removed.
 
@@ -277,7 +276,7 @@ This example would make passwordStrength an allowed global variable within that 
 ```
 The "true" after passwordStrength means that this global is being defined within this file. If you are accessing a global which is defined elsewhere, omit :true to designate the global as read-only.
 
-##Common Libraries
+## Common Libraries
 
 Backbone, jQuery, and Underscore are all registered as allowed globals in the root .jshintrc file.
 
@@ -291,7 +290,7 @@ Backbone and Underscore may be accessed directly at any time. jQuery should be a
 This will negate the need to call .noConflict(), or to set $ using another variable.
 
 
-##Naming Conventions
+## Naming Conventions
 
 Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the Meraki Digital PHP coding standards.
 
@@ -305,7 +304,7 @@ Names should be descriptive, but not excessively so. Exceptions are allowed for 
 
 
 
-##Comments
+## Comments
 
 Comments come before the code to which they refer, and should always be preceded by a blank line. Capitalize the first letter of the comment, and include a period at the end when writing full sentences. There must be a single space between the comment token (//) and the comment text.
 
@@ -333,7 +332,7 @@ function foo( types, selector, data, fn, /* INTERNAL */ one ) {
 }
 ```
 
-##Equality
+## Equality
 
 Strict equality checks (===) must be used in favor of abstract equality checks (==). The only exception is when checking for both undefined and null by way of null.
 
@@ -344,7 +343,7 @@ if ( undefOrNull == null ) {
 }
 ```
 
-##Type Checks
+## Type Checks
 
 These are the preferred ways of checking the type of an object:
 
@@ -368,7 +367,7 @@ Anywhere Backbone or Underscore are already used, you are encouraged to use Unde
 
 
 
-##Strings
+## Strings
 
 Use single-quotes for string literals:
 
@@ -382,7 +381,7 @@ When a string contains single quotes, they need to be escaped with a backslash (
 'Note the backslash before the \'single quotes\'';
 ```
 
-##Switch Statements
+## Switch Statements
 
 The usage of switch statements is generally discouraged, but can be useful when there are a large number of cases - especially when multiple cases can be handled by the same block, or fall-through logic (the default case) can be leveraged.
 
@@ -428,10 +427,10 @@ function getKeyCode( keyCode ) {
 }
 ```
 
-#Best Practices
+# Best Practices
 
 
-##Arrays
+## Arrays
 
 Creating arrays in JavaScript should be done using the shorthand [] constructor rather than the new Array() notation.
 
@@ -445,7 +444,7 @@ var myArray = [ 1, 'Meraki Digital', 2, 'Blog' ];
 ```
 In JavaScript, associative arrays are defined as objects.
 
-##Objects
+## Objects
 
 There are many ways to create objects in JavaScript. Object literal notation, {}, is both the most performant, and also the easiest to read.
 
@@ -467,7 +466,7 @@ prop = object['default'];
 prop = object['key-with-hyphens'];
 ```
 
-##"Yoda" Conditions
+## "Yoda" Conditions
 
 For consistency with the PHP code standards, whenever you are comparing an object to a string, boolean, integer, or other constant or literal, the variable should always be put on the right hand side, and the constant or literal put on the left.
 
@@ -480,7 +479,7 @@ if ( true === myCondition ) {
 
 
 
-##Iteration
+## Iteration
 
 When iterating over a large collection using a for loop, it is recommended to store the loop’s max value as a variable rather than re-computing the maximum every time:
 
@@ -500,7 +499,7 @@ for ( i = 0; i < getItemCount(); i++ ) {
 }
 ```
 
-##Underscore.js Collection Functions
+## Underscore.js Collection Functions
 
 Learn and understand Underscore’s collection and array methods. These functions, including _.each, _.map, and _.reduce, allow for efficient, readable transformations of large data sets.
 
@@ -524,7 +523,7 @@ var arr = _.chain( obj )
 // arr === [ 'first comes thing 1', 'second comes thing 2', 'third comes lox' ]
 ```
 
-##Iterating Over jQuery Collections
+## Iterating Over jQuery Collections
 
 The only time jQuery should be used for iteration is when iterating over a collection of jQuery objects:
 
@@ -539,13 +538,13 @@ Never use jQuery to iterate over raw data or vanilla JavaScript objects.
 
 
 
-##JSHint
+## JSHint
 
 JSHint is an automated code quality tool, designed to catch errors in your JavaScript code. JSHint is used in Meraki Digital development to quickly verify that a patch has not introduced any logic or syntax errors to the front-end.
 
 
 
-##Installing and Running JSHint
+## Installing and Running JSHint
 
 JSHint is run using a tool called Grunt. Both JSHint and Grunt are programs written in Node.js. A configuration file that comes with the Meraki Digital development code makes it easy to install and configure these tools.
 
@@ -600,7 +599,7 @@ Limiting JSHint to a single file can be useful if you are only working on one or
 
 
 
-##JSHint Overrides: Ignore Blocks
+## JSHint Overrides: Ignore Blocks
 
 In some situations, parts of a file should be excluded from JSHint. As an example, the script file for the admin bar contains the minified code for the jQuery HoverIntent plugin - this is third-party code that should not pass through JSHint, even though it is part of a Meraki Digital core JavaScript file.
 

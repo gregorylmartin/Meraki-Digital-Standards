@@ -1,10 +1,10 @@
-#CSS Coding Standards
+# CSS Coding Standards
 
 Like any coding standard, the purpose of the Meraki Digital CSS Coding Standards is to create a baseline for collaboration and review within various aspects of the Meraki Digital open source project and community, from core code to themes to plugins. Files within a project should appear as though created by a single entity. Above all else, create code that is readable, meaningful, consistent, and beautiful.
 
 Within core stylesheets, inconsistencies will often be found. We are working on addressing these and make every effort to have patches and commits from this point forward follow the CSS coding standards. More information on the above and contributing to UI/front-end development will be forthcoming in a separate set of guidelines.
 
-##Structure
+## Structure
 
 There are plenty of different methods for structuring a stylesheet. With the CSS in core, it is important to retain a high degree of legibility. This enables subsequent contributors to have a clear understanding of the flow of the document.
 
@@ -32,7 +32,7 @@ Incorrect:
 #selector-1 { background: #fff; color: #000; }
 ```
 
-##Selectors
+## Selectors
 
 With specificity, comes great responsibility. Broad selectors allow us to be efficient, yet can have adverse consequences if not tested. Location-specific selectors can save us time, but will quickly lead to a cluttered stylesheet. Exercise your best judgement to create selectors that find the right balance between contributing to the overall style and layout of the DOM.
 
@@ -75,7 +75,7 @@ input[type=text] { /* Should be [type="text"] */
 }
 ```
 
-##Properties
+## Properties
 
 Similar to selectors, properties that are too specific will hinder the flexibility of the design. Less is more. Make sure you are not repeating styling or introducing fixed dimensions (when a fluid solution is more acceptable).
 
@@ -105,7 +105,7 @@ Incorrect:
 }
 ```
 
-##Property Ordering
+## Property Ordering
 
 > “Group like properties together, especially if you have a lot of them.”
 > — Nacin
@@ -148,7 +148,7 @@ Example:
 }
 ```
 
-##Vendor Prefixes
+## Vendor Prefixes
 
 Updated on 2/13/2014, after [27174]:
 
@@ -162,7 +162,7 @@ We use Autoprefixer as a pre-commit tool to easily manage necessary browser pref
 }
 ```
 
-##Values
+## Values
 
 There are numerous ways to input values for properties. Follow the guidelines below to help us retain a high degree of consistency.
 
@@ -201,7 +201,7 @@ Incorrect:
 }
 ```
 
-##Media Queries
+## Media Queries
 
 Media queries allow us to gracefully degrade the DOM for different screen sizes. If you are adding any, be sure to test above and below the break-point you are targeting.
 
@@ -217,7 +217,7 @@ Example:
 }
 ```
 
-##Commenting
+## Commenting
 
 Comment, and comment liberally. If there are concerns about file size, utilize minified files and the SCRIPT_DEBUG constant. Long comments should manually break the line length at 80 characters.
 A table of contents should be utilized for longer stylesheets, especially those that are highly sectioned. Using an index number (1.0, 1.1, 2.0, etc.) aids in searching and jumping to a location.
@@ -246,7 +246,7 @@ For inline:
 }
 ```
 
-##Best Practices
+## Best Practices
 
 Stylesheets tend to get long in length. Focus slowly gets lost whilst intended goals start repeating and overlapping. Writing smart code from the outset helps us retain the overview whilst remaining flexible throughout change.
 
@@ -257,6 +257,6 @@ Know when to use the height property. It should be used when you are including o
 Do not restate default property & value combinations (for instance display: block; on block-level elements).
 
 
-##Related Links
+## Related Links
 
 Principles of writing consistent, idiomatic CSS: https://github.com/necolas/idiomatic-css
